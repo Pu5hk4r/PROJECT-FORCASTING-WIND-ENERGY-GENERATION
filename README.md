@@ -1,26 +1,97 @@
-# Wind Turbine Renewable Energy Generation Forecasting
+# ⚡ Wind Turbine Renewable Energy Generation Forecasting Web App
 
-This project aims to forecast renewable energy generation using time series data from wind turbines. Leveraging machine learning techniques, it provides accurate predictions based on 30 days of historical wind turbine data.
+A web-based machine learning application to forecast wind energy generation using time-series feature engineering and a pre-trained XGBoost regression model. Built with Flask and visualized through Matplotlib plots.
 
-## Project Overview
+---
 
-Wind energy is one of the most promising sources of renewable energy. This project utilizes time series analysis and regression models to predict the energy output of wind turbines. By analyzing the data collected over time, we can better understand patterns and fluctuations in energy generation, enabling more efficient energy management and planning.
+## 📊 Visualization
+![visuals](https://github.com/Pu5hk4r/PROJECT-FORCASTING-WIND-ENERGY-GENERATION/blob/main/wind_energy_genration_prediction.png)
+---
+## 📚 Project Overview
 
-## Features
+Wind energy is a crucial source of renewable energy in today's sustainable world.  
+This project predicts future energy generation from wind turbines based on **timestamp-driven features** like hour, day, and month — enabling better **energy planning and optimization**.  
+Users can dynamically input a date range through a web interface and receive a **real-time prediction plot** for the specified period.
 
-- **Data Source**: 30 days of wind turbine data
-- **Methods Used**: Time series analysis, regression models
-- **Goal**: Predict future energy generation for optimal resource allocation
-- **Technologies**: Python, Pandas, NumPy, Scikit-learn, Matplotlib
-- **Visualization**: Energy generation trends and prediction accuracy visualized through various plots
+---
 
-## Key Steps
+## 🚀 Features
 
-1. **Data Preprocessing**: Cleaning and structuring wind turbine data for time series analysis
-2. **Exploratory Data Analysis**: Identifying patterns and anomalies in the dataset
-3. **Modeling**: Applying regression techniques and time series models to forecast future energy generation
-4. **Evaluation**: Measuring model accuracy using key performance metrics
+- **Interactive Web App**: Users input a date range to forecast energy generation.
+- **Machine Learning Model**: Pre-trained XGBoost Regressor (`model2.pkl`) for high-accuracy predictions.
+- **Automatic Feature Engineering**: Generates time-based features from timestamps (hour, day, month, etc.).
+- **Visualization**: Real-time prediction graphs created with Matplotlib and displayed via Flask.
+- **Lightweight Backend**: Simple Flask server handles user requests, model inference, and visualization generation.
 
-## Conclusion
+---
 
-This project demonstrates the potential of machine learning in enhancing the efficiency of renewable energy systems. The forecasts provided can help energy providers optimize operations and manage resources more effectively.
+## 🛠️ Tech Stack
+
+- **Backend:** Python, Flask
+- **Machine Learning:** XGBoost, Pickle
+- **Data Processing:** Pandas, NumPy
+- **Visualization:** Matplotlib, Seaborn
+- **Frontend:** HTML (via Flask Jinja2 Templates)
+
+---
+
+## 🧩 Key Components
+
+| Component | Description |
+|:---------|:-------------|
+| `model.py` | Loads pre-trained model, handles feature engineering, prepares future timestamps |
+| `app.py` | Flask app managing routes, user inputs, prediction logic, and plot generation |
+| `/templates/index.html` | Frontend web form for date input |
+| `/static/output.png` | Saves generated prediction plot |
+
+---
+
+## 🛤️ How It Works
+
+1. **User Input**:  
+   - User selects a **From Date** and **To Date** via the web form.
+
+2. **Feature Generation**:  
+   - The app creates a date range with **10-minute intervals** between the two dates.
+   - Features such as `hour`, `minute`, `day`, `month`, `year`, etc., are automatically generated.
+
+3. **Prediction**:  
+   - The feature set is fed into the pre-trained XGBoost model to predict **future energy output**.
+
+4. **Visualization**:  
+   - Predictions are plotted as a **time-series graph** and saved dynamically.
+
+5. **Result Display**:  
+   - The generated graph is displayed back to the user on the same page.
+
+---
+
+## 📈 Example Flow
+
+```plaintext
+User selects:
+From Date: 2025-04-20
+To Date: 2025-04-22
+
+-> System generates 10-min interval timestamps
+-> Features extracted from timestamps
+-> Model predicts energy output at each interval
+-> Graph created showing energy trends between April 20–22
+-> Graph displayed on the web page
+
+```
+
+---
+## 🧹 Future Enhancements (Ideas)
+- Deploy on cloud platform (AWS/GCP) for wider access.
+- Add user authentication to save prediction history.
+- Improve model accuracy by integrating external weather features (wind speed, humidity, temperature).
+- Make plots interactive with Plotly or Dash.
+
+
+
+
+
+
+
+
